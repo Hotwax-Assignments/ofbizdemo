@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
+    <!-- The controller elements that are common to all OFBiz components
+         can be found in the following xml file. A component can override the
+         elements found in the common-controller.xml file. -->
+    <include location="component://common/webcommon/WEB-INF/common-controller.xml"/>
+
+    <description>Ofbizdemo Component Site Configuration File</description>
+
+    <!-- Events to run on every request before security (chains exempt) -->
+    <!--
+    <preprocessor>
+    </preprocessor>
+    -->
+    <!-- Events to run on every request after all other processing (chains exempt) -->
+    <!--
+    <postprocessor>
+        <event name="test" type="java" path="org.apache.ofbiz.webapp.event.TestEvent" invoke="test"/>
+    </postprocessor>
+    -->
+
+    <!-- Request Mappings -->
+    <!-- for screen -->
+    <request-map uri="main">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="mainScreen"/>
+    </request-map>
+    
+    <request-map uri="findScreen">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="findOfbizDemoScreen"/> 
+        <!-- in value we will pass the name of the view we defined below -->
+    </request-map>
+
+    <request-map uri="addOfbizDemoFtl">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="addOfbizDemoFtl"/>
+    </request-map>
+
+    <!-- for add     -->
+    <request-map uri="createOfbizDemoURI">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createOfbizDemo"/>
+        <response name="success" type="view" value="mainScreen"/>
+    </request-map>
+    <request-map uri="createOfbizDemoJavaURI">
+        <description>Create OfbizDemo record using Java service</description>
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createOfbizDemoJava"></event>
+        <response name="success" type="view" value="mainScreen"></response>
+    </request-map>
+    <request-map uri="createOfbizDemoGroovyURI">
+        <description>Create OfbizDemo record using Groovy service</description>
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createOfbizDemoGroovy"></event>
+        <response name="success" type="view" value="mainScreen"></response>
+    </request-map>
+    <request-map uri="createOfbizDemoEventURI">
+        <description>Create OfbizDemo record using Event and Groovy service</description>
+        <security https="true" auth="true"/>
+        <event type="java" path="com.company.ofbizdemo.events.OfbizDemoEvents" invoke="createOfbizDemo"/>
+        <response name="success" type="view" value="addOfbizDemoFtl"/>
+    </request-map>
+
+    <!-- for find -->
+    
+    <request-map uri="findOfbizDemoURI">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="findOfbizDemoScreen"/>
+    </request-map>
+     
+
+
+    <!-- View Mappings -->
+    <!-- for main screen -->
+    <view-map name="mainScreen" type="screen" page="component://ofbizdemo/widget/OfbizdemoScreens.xml#mainScreen"/>
+    <!-- for find screen -->     
+    <view-map name="findOfbizDemoScreen" type="screen" page="component://ofbizdemo/widget/OfbizdemoScreens.xml#FindOfbizDemoScreen"/>
+    <!-- for ftl screen -->
+    <view-map name="addOfbizDemoFtl" type="screen" page="component://ofbizdemo/widget/OfbizdemoScreens.xml#AddOfbizDemoFtl"/>
+
+</site-conf>                                                                                                  
