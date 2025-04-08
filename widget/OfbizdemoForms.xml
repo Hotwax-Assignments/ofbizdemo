@@ -53,7 +53,7 @@ under the License.
                         <text-find/>
                 </field>
                 <field name="ofbizDemoTypeId" title="${uiLabelMap.OfbizDemoTypeId}">
-                        <drop-down allow-empty="false" current-description="">
+                        <drop-down allow-empty="true" current-description="">
                                 <entity-options description="${description}" entity-name="OfbizDemoType" key-field-name="ofbizDemoTypeId">
                                         <entity-order-by field-name="description"/>
                                 </entity-options>

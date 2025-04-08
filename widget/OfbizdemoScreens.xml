@@ -24,10 +24,10 @@ under the License.
     <screen name="mainScreen">
         <section>
             <actions>
-                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="headerItem" value="main"/> <!-- this highlights the selected menu-item with name "main" -->
             </actions>
             <widgets>
-                <decorator-screen name="OfbizdemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <screenlet title="Add OfbizDemo record">
                             <include-form name="AddOfbizDemoForm" location="component://ofbizdemo/widget/OfbizdemoForms.xml"/>
@@ -81,14 +81,16 @@ under the License.
         <widgets>
             <decorator-screen name="OfbizDemoCommonDecorator" location="${parameters.mainDecoratorLocation}">
                 <decorator-section name="body">
-                     <label style="h4" text="${uiLabelMap.OfbizDemoListOfbizDemos}"/>
-                     <platform-specific>
-                         <html><html-template location="component://ofbizdemo/webapp/ofbizdemo/crud/ListOfbizDemo.ftl"/></html>
-                     </platform-specific>
-                     <label style="h4" text="${uiLabelMap.OfbizDemoAddOfbizDemoFtl}"/>
+                     <label style="h4" text="Ofbiz Demo Add Ftl"/>
                      <platform-specific>
                          <html><html-template location="component://ofbizdemo/webapp/ofbizdemo/crud/AddOfbizDemo.ftl"/></html>
                      </platform-specific>
+                     <label style="h3" text="-------------------------------------------------------------------------------------------------------------------------------------------"/>
+                     <label style="h4" text="Ofbiz Demo List Ftl"/>
+                     <platform-specific>
+                         <html><html-template location="component://ofbizdemo/webapp/ofbizdemo/crud/ListOfbizDemo.ftl"/></html>
+                     </platform-specific>
+                     
                 </decorator-section>
             </decorator-screen>
         </widgets>
